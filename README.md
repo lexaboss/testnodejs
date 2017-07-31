@@ -8,7 +8,7 @@ In case of multiple backers, they submit equal part of the deposit and share the
 # Install 
 1. docker build -t alexb/test_api_opti . --no-cache
 2. docker-compose up 
-3. dokcer exec -ti test_api_opti bash
+3. docker exec -ti test_api_opti bash
 4. cd /usr/src/app && git clone git@github.com:lexaboss/testnodejs.git
 5. npm init
 6. npm start
