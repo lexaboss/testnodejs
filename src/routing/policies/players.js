@@ -2,6 +2,7 @@
 
 import Player from '../../models/players.js';
 import httpCodes from '../../configs/httpCodes.json';
+import round from 'lodash.round';
 
 module.exports.take = (req, res, next) => {
 
@@ -24,7 +25,7 @@ module.exports.take = (req, res, next) => {
 			// balance is big enough
 			if(players.length && (player = players[0]).balance >= points)
 			{
-				player.balance = parseInt(player.balance) - parseInt(points);
+				player.balance = round(player.balance, 2) - round(points, 2);
 				player.save( (err) => {
 					res.status(httpCodes.OK).send('');
 				});
@@ -63,7 +64,7 @@ module.exports.fund = (req, res, next) => {
 			{
 				let player = new Player;
 				player.publicId = playerId;
-				player.balance = parseInt(points);
+				player.balance = round(points, 2);
 				player.save( (err) => {
 					res.status(httpCodes.OK).send('');
 				});
@@ -72,7 +73,7 @@ module.exports.fund = (req, res, next) => {
 			else
 			{
 				let player = players[0];
-				player.balance = parseInt(player.balance) + parseInt(points);
+				player.balance = round(player.balance, 2) + round(points, 2);
 				player.save( (err) => {
 					res.status(httpCodes.OK).send('');
 				});

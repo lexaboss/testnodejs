@@ -3,6 +3,7 @@
 import Tournament from '../../models/tournament.js';
 import Player from '../../models/players.js';
 import httpCodes from '../../configs/httpCodes.json';
+import round from 'lodash.round';
 
 const STATUS_NEW = 0;
 const STATUS_FINISHED = 1;
@@ -37,7 +38,7 @@ module.exports.announceTournament = (req, res, next) => {
 				// else updating deposit summ
 				else
 				{
-					tournament.deposit = parseInt(deposit);
+					tournament.deposit = round(deposit, 2);
 					tournament.save( (err) => {
 						res.status(httpCodes.OK).send('');
 					});
@@ -47,7 +48,7 @@ module.exports.announceTournament = (req, res, next) => {
 			{
 				let tournament = new Tournament;
 				tournament.publicId = tournamentId;
-				tournament.deposit = parseInt(deposit);
+				tournament.deposit = round(deposit, 2);
 				tournament.status = STATUS_NEW;
 				tournament.players = [];
 				tournament.save( (err) => {
@@ -148,7 +149,7 @@ module.exports.joinTournament = (req, res, next) => {
 
 																Player.findById(backerId, (err, players) => {
 																	let player = players[0];
-																	player.balance = parseInt(player.balance) - parseInt(summToCharge);
+																	player.balance = round(player.balance, 2) - round(summToCharge, 2);
 																	player.save( (err) => {
 																		savePlayer();
 																	})
@@ -231,7 +232,7 @@ module.exports.resultTournament = (req, res, next) => {
 
 							Player.findById(playerId, (err, players) => {
 								let player = players[0];
-								player.balance = parseInt(player.balance) + parseInt(winningSumm);
+								player.balance = round(player.balance, 2) + round(winningSumm, 2);
 								player.save( (err) => {
 									savePlayer();
 								})

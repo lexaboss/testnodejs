@@ -12,6 +12,7 @@
     "express": "^4.13.4",
     "express-ipfilter": "^0.3.1",
     "ottoman":"*",
+    "lodash": "4.17.3",
     "couchbase": "*",
     "body-parser": "*"
   },
