@@ -1,0 +1,19 @@
+{
+  "name": "test_api_opti",
+  "version": "1.0.0",
+  "description": "test API from docker",
+  "author": "AlexB",
+  "scripts": {
+    "start": "nodemon /usr/src/app/test-api/src/index.js --exec babel-node"
+  },
+  "dependencies": {
+    "axios": "^0.13.1",
+    "cors": "*",
+    "express": "^4.13.4",
+    "express-ipfilter": "^0.3.1",
+    "ottoman":"*",
+    "couchbase": "*",
+    "body-parser": "*"
+  },
+  "version": "1.0.0"
+}

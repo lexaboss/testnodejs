@@ -1,0 +1,13 @@
+{
+	"get" : {
+		"fund" : "players",
+		"take" : "players",
+		"balance" : "players",
+
+		"announceTournament" : "tournament",
+		"joinTournament" : "tournament"
+	},
+	"post" : {
+		"resultTournament" : "tournament"
+	}
+}

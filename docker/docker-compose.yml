@@ -1,0 +1,7 @@
+nodejs:
+ image: alexb/test_api_opti:latest
+ container_name: test_api_opti
+ ports:
+  - 8888:8080
+ volumes:
+  - ./test-api:/usr/src/app/test-api
